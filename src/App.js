@@ -1,9 +1,12 @@
+import './App.css';
 import React, { useEffect, useState } from 'react';
 
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [memeTemplate, setMemeTemplate] = useState();
+  const [templateName, setTemplateName] = useState('afraid');
+  const template = `afraid ${templateName}!`;
+
   const handleTopTextChange = (e) => {
     setTopText(e.target.value);
   };
@@ -11,28 +14,30 @@ export default function App() {
   const handleBottomTextChange = (e) => {
     setBottomText(e.target.value);
   };
-  /*const handleMemeTemplateChange = (e) => {
-    setMemeTemplate(e.target.value);
-  };*/
+
+  const handleTemplateTextChange = (e) => {
+    setTemplateName(e.target.value);
+  };
 
   useEffect(() => {
-    // Fetch memes from a URL
-    fetch('https://memegen.link/ ')
+    fetch(`https://memegen.link/ `)
       .then((response) => response.json())
-      .then((Gif) => {
-        setMemeTemplate(Gif); // Store the meme data in state
+      .then((data) => {
+        setTemplateName(data);
       })
       .catch((error) => {
         console.error('Error fetching memes:', error);
       });
-  }, []);
+  });
   return (
     <div className="meme-generator">
       <h1>Meme Generator</h1>
+
       <img
-        src="https://api.memegen.link/images/buzz/memes/memes_everywhere.gif"
-        alt="Meme"
+        src={`https://api.memegen.link/images/${templateName}.png`}
         data-test-id="meme-image"
+        alt="custom meme"
+        name={templateName}
       />
 
       <div className="text-boxes">
@@ -50,9 +55,15 @@ export default function App() {
             onChange={handleBottomTextChange}
           />
           <br />
-          <button> Meme Generator</button>
+          <button>Download</button>
         </div>
       </div>
+      <label htmlFor="templateSelector">Meme Template:</label>
+      <input
+        id="templateSelector"
+        value={templateName}
+        onChange={handleTemplateTextChange}
+      ></input>
     </div>
   );
 }

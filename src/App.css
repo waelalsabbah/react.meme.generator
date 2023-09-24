@@ -1,0 +1,48 @@
+/* App.css */
+
+.meme-generator {
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+#meme-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
+
+.text-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.top-text-box,
+.bottom-text-box {
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
