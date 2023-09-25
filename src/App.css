@@ -1,8 +1,8 @@
-/* App.css */
-
 .meme-generator {
   text-align: center;
   margin: 20px;
+  padding: 20px;
+  border: 2px solid #000;
 }
 
 h1 {
@@ -45,4 +45,24 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+.meme-image-container {
+  position: relative;
+}
+
+.meme-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: tomato;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+label {
+  font-size: 18px; /* Set the desired font size */
+  color: #333; /* Set the desired font color */
+  margin-bottom: 8px; /* Add some vertical spacing between labels and inputs */
 }
