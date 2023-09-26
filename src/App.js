@@ -20,7 +20,7 @@ export default function App() {
   };
 
   const handleDownload = () => {
-    const templateImageUrl = 'https://memegen.link/ ';
+    const templateImageUrl = `https://api.memegen.link/images/${templateName}.png `;
 
     const downloadLink = document.createElement('a');
     downloadLink.href = templateImageUrl;
