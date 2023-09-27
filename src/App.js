@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 export default function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
-  const [templateName, setTemplateName] = useState('afraid');
+  const [templateName, setTemplateName] = useState('doge');
   const template = `afraid ${templateName}!`;
 
   const handleTopTextChange = (e) => {
@@ -20,7 +20,7 @@ export default function App() {
   };
 
   const handleDownload = () => {
-    const templateImageUrl = `https://api.memegen.link/images/${templateName}.png `;
+    const templateImageUrl = `https://api.memegen.link/images/${templateName}/${topText}/${bottomText}.png `;
 
     const downloadLink = document.createElement('a');
     downloadLink.href = templateImageUrl;
@@ -44,17 +44,11 @@ export default function App() {
       <h1>Meme Generator</h1>
       <div className="meme-image-container">
         <img
-          src={`https://api.memegen.link/images/${templateName}.png`}
+          src={`https://api.memegen.link/images/${templateName}/${topText}/${bottomText}.png`}
           data-test-id="meme-image"
           alt="custom meme"
           name={templateName}
         />
-        <div className="meme-text" style={{ top: '10%', left: '50%' }}>
-          {topText}
-        </div>
-        <div className="meme-text" style={{ top: '90%', left: '50%' }}>
-          {bottomText}
-        </div>
       </div>
       <div className="text-boxes">
         <div className="top-text-box">
@@ -70,16 +64,18 @@ export default function App() {
             value={bottomText}
             onChange={handleBottomTextChange}
           />
+          <label>
+            Template Name <br />
+            <input
+              value={templateName}
+              onChange={(event) => setTemplateName(event.currentTarget.value)}
+            />
+          </label>
           <br />
           <br />
           <button onClick={handleDownload}>Download Template</button>
         </div>
         <label htmlFor="templateSelector">Meme Template:</label>
-        <input
-          id="templateSelector"
-          value={templateName}
-          onChange={handleTemplateTextChange}
-        ></input>
       </div>
     </div>
   );
